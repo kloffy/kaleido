@@ -1,0 +1,390 @@
+.\"$Id: kaleido.man,v 3.27 2002-01-06 16:21:56+02 rl Exp $
+.TH KALEIDO 1 "$Date: 2002-01-06 16:21:56+02 $" "$Revision: 3.27 $"
+.ds *a \(*a
+.ds *g \(*g
+.ds *p \(*p
+.ds *r \(*r
+.ds *x \(*x
+.SH NAME
+kaleido \- kaleidoscopic construction of uniform polyhedra
+.SH SYNOPSIS
+.B kaleido
+.B [\-silvwxgnLRGB]
+.BI [\-d digits ]
+.BI [\-a degrees ]
+.BI [\-e degrees ]
+.BI [\-f degrees ]
+.BI [\-p prefix ]
+.BI [\-P prefix ]
+.BI [\-m mode ]
+.BI [\-r edges ]
+.BI [ symbols ]
+.SH DESCRIPTION
+Let
+.I (p q r)
+be a
+.I Schwarz
+triangle, i.e. a spherical triangle
+.I PQR 
+with angles
+.I \*(*p/p, \*(*p/q
+and
+.I \*(*p/r, 
+such that the sphere can be covered evenly by images of the
+triangle under successive reflections in its sides.
+
+The vertices of a
+.I uniform
+(facially regular, isogonal)
+polyhedron are constructed, following
+.I Wythoff,
+by successive reflections
+of a certain point
+.I C
+of
+.I PQR,
+in four ways:
+.TP
+.IR p | "q r" :
+.I C
+is located at the vertex
+.I P.
+.TP
+.IR "p q" | r :
+.I C
+is located on the side
+.I PQ,
+at its intersection with the bisector of the angle
+.I R.
+.TP
+.IR "p q r" |:
+.I C
+is located in the incenter of
+.I PQR.
+.TP
+.RI | "p q r" :
+.I C
+is located in an interior point of
+.I PQR,
+in such a way that its images under an even number of reflections
+generate a chiral (non-reflexible) uniform polyhedron.
+.PP
+In the same time, the tangent planes to the sphere at
+.I C
+and its images make the faces of the
+.I dual
+(vertically regular, isohedral) polyhedron.
+
+.I kaleido
+displays the following tabulated data for the uniform polyhedron:
+
+1) Its name.
+
+2) Its Wythoff symbol (3 rationals and a |).
+
+3) References to figures in
+.I Uniform Polyhedra
+and in
+.I Polyhedron Models
+(see below).
+
+4) The name of its dual.
+
+
+.I kaleido
+displays the following computed data for the uniform polyhedron:
+
+1) The cyclic face arrangement at its vertex.
+
+2) Its symmetry group.
+
+3) Its density
+.I D
+(if determined).
+
+4) Its Euler characteristic
+.IR \*(*x .
+
+5) The counts
+.I V, E, F
+of its vertices, edges and faces, respectively.
+.RI ( F
+is also given as a sum of counts of faces of different types.)
+
+6) The angles
+.I \*(*a, \*(*g
+and the sides
+.I a, b, c
+of the fundamental right-angled spherical
+triangle
+.I ABC
+for face type
+.RI { n }.
+.RI ( C
+is as above,
+.I B
+is at the right angle.)
+
+7) The ratios
+.I \*(*r/R = cos a,
+.I r/\*(*r = cos c,
+.I l/\*(*r = tan a,
+.I h/r = tan c,
+where
+.I R, \*(*r, r, l
+and
+.I h
+are the circumradius, the midradius, the inradius,
+the semiedge and the facial inradius, respectively.
+
+Note that the polyhedra in a dual pair have common values for
+.I D, E
+and
+.I b,
+while the values of
+.I V, \*(*a, a, \*(*r/R
+and
+.I l/\*(*r
+for each polyhedron are equal to the values of
+.I F, \*(*g, c, r/\*(*r
+and
+.I h/r
+for its dual, respectively.
+
+If graphics is available,
+.I kaleido
+optionally displays rotating wire-frame images of the polyhedra,
+with depth represented by the edge color brightness level.
+
+It may be shown that there exist finitely many uniform polyhedra,
+in addition to two denumerable families of prisms and antiprisms.
+.IR Kaleido 's
+standard list contains the five prisms and antiprisms with five-fold
+dihedral symmetry, as well as the seventy-five uniform polyhedra 
+with tetrahedral, octahedral or icosahedral symmetry.
+
+.SH OPTIONS
+
+.TP
+.B \-s
+process the polyhedra in the standard list.
+.TP
+.B \-i
+process polyhedra in an input list. Each line in the standard input
+should contain one symbol, either a Wythoff symbol (three fractions
+and a vertical bar in some order) or an index in the standard list
+(a number sign followed by an integer in the range one through eighty).
+If neither
+.B \-s
+nor
+.B \-i
+are selected, quoted polyhedron symbols may be specified on the command line,
+after the options.
+.TP
+.B \-l
+list polyhedron names, symbols and reference figures.
+.TP
+.B \-v
+display vertex and face coordinates and, for each vertex, the list of
+adjacent vertices and incident faces, arranged counter-clockwise.
+The vertex coordinates are normalized so that the circumradius 
+is one.
+The face coordinates are the coefficients of their cartesian equations,
+normalized so that the right hand side is the smallest finite inradius.
+Equatorial faces are starred, their right hand side is zero, and their
+coordinates normalized to have a unit sum of squares.
+The chosen normalization makes the face coordinates the dual vertex
+coordinates, with largest finite circumradius one (equatorial faces correspond
+to ideal vertices). It also makes the vertex coordinates
+the dual face coordinates, with the right hand side as above.
+.TP
+.B \-w
+produce virtual reality worlds (models) of the uniform polyhedron and its
+dual, suitable for display on the World Wide Web by any
+.I VRML97
+browser. The model includes the vertex coordinates and the list of vertices
+of the facial polygons. To overcome the limitations of current browsers, faces
+bounded by non-simple polygons (e.g., pentagrams) are broken down into simple
+sub-faces by insertion of auxiliary vertices. Each face has a solid color,
+using a simple coloring scheme depending on the face valency: The fundamental
+colors red, green, and blue are used to color triangles, quadrilaterals and
+pentagons.  The composite colors yellow, magenta and cyan are used to color
+hexagons, octagons and decagons, respectively. Other polygons, which may occur
+only in as bases of prisms or antiprisms, are arbitrarily colored pink. A
+simple conversion program may be used to change the model to any other suitable
+format, e.g, ray-tracing specification.
+.TP
+.B \-x
+display, on standard error, the successive Newton approximations to 
+.I \*(*g.
+.TP
+.BI \-d digits
+number of significant digits to display (default \- six).
+.TP
+.BI \-a degrees
+azimuth of rotation axis.
+.TP
+.BI \-e degrees
+elevation of rotation axis.
+.TP
+.BI \-f degrees
+angle of rotation until freezing. If
+.B \-g
+is not specified, a
+.I pic
+snapshot will be taken at this point.
+Otherwise, the rotation stops at this point if
+.B F
+is hit.
+.TP
+.BI \-p prefix
+write
+.I pic
+snapshots on
+.IR prefix nnn.pic,
+for inclusion in a
+.I troff
+or a 
+.I TeX
+document (default \-
+.IR XXXXX ,
+the process id).
+Similarly,
+.I VRML97
+models will be written on
+.IR prefix nnn.wrl.
+.TP
+.BI \-P prefix
+similar to
+.BR \-p .
+When both are specified, 
+.B \-p
+refers to uniform polyhedra and
+.B \-P
+to their duals.
+.TP
+.B \-g
+display polyhedra on a graphics monitor.
+Infinite polyhedra are displayed in half-size and with
+the infinite edges truncated.
+Under this option, the polyhedron rotates until a key is hit.
+The rotation resumes if another key is hit.
+To display the next polyhedron, hit
+.I Enter
+during the rotation, and to display the previous, hit
+.I Backspace.
+To display the dual polyhedron, hit
+.I Tab.
+To exit 
+.I kaleido,
+hit
+.I Esc.
+To take a
+.I pic
+snapshot, hit
+.I S
+while the rotation is stopped.
+.TP
+.B \-n
+display numerical data in addition to graphical.
+Numerical data is displayed by default unless
+.B \-g
+option is selected. The
+.B \-n
+option is implied by the
+.B \-v
+or
+.B \-x
+options.
+.TP
+.B \-L
+select light background (default \- dark).
+.TP
+.B \-[RGB]
+select colors \- red, green, blue, or combinations.
+.TP
+.BI \-m mode
+video mode.
+.TP
+.BI \-r edges
+select drawing rate, given as the number of displayed edges
+per revolution (default  \- 25200).
+
+.SH "SEE ALSO"
+
+Coxeter, H.S.M., Longuet-Higgins, M.S. & Miller, J.C.P.,
+.I Uniform Polyhedra,
+Phil. Trans. Royal Soc. London,
+Ser. A, 246 (1953), 401-409.
+
+Har'El, Z.,
+.I Uniform Solution for Uniform Polyhedra,
+Geometriae Dedicata, 47 (1993), 57-110.
+
+Wenninger, M.J.,
+.I Polyhedron Models,
+Cambridge University Press, 1971.
+
+.I The Virtual Reality Modeling Language, 
+International Standard ISO/IEC 14772-1:1997, 
+http://www.vrml.org/Specifications/VRML97/
+
+.SH DIAGNOSTICS
+In the interactive mode, i.e., when both the standard input and output
+are connected to the terminal and the
+.B \-i
+option is selected, most errors are considered warnings. Otherwise, they are
+fatal and terminate the run. The error messages are self explanatory.
+For more details, they contain references to the source files.
+
+.SH BUGS
+Polyhedron names sometimes vary among authors.
+
+.SH COPYRIGHT
+
+
+Copyright \(co 1991-2002 Dr. Zvi Har'El <rl@math.technion.ac.il>
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+1. Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in
+the documentation and/or other materials provided with the
+distribution.
+
+3. The end-user documentation included with the redistribution,
+if any, must include the following acknowledgment:
+"This product includes software developed by Dr. Zvi Har'El
+(http://www.math.technion.ac.il/~rl/)."
+Alternately, this acknowledgment may appear in the software itself,
+if and wherever such third-party acknowledgments normally appear.
+
+This software is provided 'as-is', without any express or implied
+warranty.  In no event will the author be held liable for any
+damages arising from the use of this software.
+
+
+.SH AVAILABILITY
+.I Kaleido
+is available by anonymous ftp from 
+.I ftp.math.technion.ac.il.
+
+In addition to the source files, one may find there executable files
+for several platforms, including MS-DOS and Linux,
+and an electronic version of the author's paper mentioned above.
+
+.SH AUTHOR
+Dr. Zvi Har'El,
+.br
+Department of Mathematics,
+.br
+Technion, Israel Institute of Technology,
+.br
+Haifa 32000, Israel.
+.br
+E-mail: rl@math.technion.ac.il

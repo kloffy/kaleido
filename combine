@@ -1,0 +1,83 @@
+#$Id: combine,v 3.27 2002-01-06 16:38:16+02 rl Exp $
+#******************************************************
+# kaleido
+#
+#	Kaleidoscopic construction of uniform polyhedra
+#	Copyright © 1991-2002 Dr. Zvi Har'El <rl@math.technion.ac.il>
+#
+# 	Redistribution and use in source and binary forms, with or without
+# 	modification, are permitted provided that the following conditions
+# 	are met:
+# 
+# 	1. Redistributions of source code must retain the above copyright
+# 	   notice, this list of conditions and the following disclaimer.
+# 
+# 	2. Redistributions in binary form must reproduce the above copyright
+# 	   notice, this list of conditions and the following disclaimer in
+# 	   the documentation and/or other materials provided with the
+# 	   distribution.
+# 
+# 	3. The end-user documentation included with the redistribution,
+# 	   if any, must include the following acknowledgment:
+# 		"This product includes software developed by
+# 		 Dr. Zvi Har'El (http://www.math.technion.ac.il/~rl/)."
+# 	   Alternately, this acknowledgment may appear in the software itself,
+# 	   if and wherever such third-party acknowledgments normally appear.
+# 
+# 	This software is provided 'as-is', without any express or implied
+# 	warranty.  In no event will the author be held liable for any
+# 	damages arising from the use of this software.
+#
+#	Author:
+#		Dr. Zvi Har'El,
+#		Deptartment of Mathematics,
+#		Technion, Israel Institue of Technology,
+#		Haifa 32000, Israel.
+#		E-Mail: rl@math.technion.ac.il
+#******************************************************
+
+# Combine seperate picture files.
+#
+# They are oredered such that three uniform polyhedra are followed
+# by their three duals, to allow printing six polyhedra in two columns.
+#
+echo ".bp"
+echo ".2C"
+i=001
+while :
+do
+	i1=`expr $i + 1`
+	case $i1 in
+	[0-9]) i1=00$i1;;
+	[0-9][0-9]) i1=0$i1;;
+	esac
+	i2=`expr $i1 + 1`
+	case $i2 in
+	[0-9]) i2=00$i2;;
+	[0-9][0-9]) i2=0$i2;;
+	esac
+	if test ! -s poly$i.pic -o ! -s dual$i.pic
+	then
+		break
+	fi
+	if test ! -s poly$i1.pic -o ! -s dual$i1.pic
+	then
+		cat poly$i.pic
+		echo ".sp 6i"
+		cat dual$i.pic
+		break
+	fi
+	if test ! -s poly$i2.pic -o ! -s dual$i2.pic
+	then
+		cat poly$i.pic poly$i1.pic
+		echo ".sp 3i"
+		cat dual$i.pic dual$i1.pic
+		break
+	fi
+	cat poly$i.pic poly$i1.pic poly$i2.pic dual$i.pic dual$i1.pic dual$i2.pic 
+	i=`expr $i2 + 1`
+	case $i in
+	[0-9]) i=00$i;;
+	[0-9][0-9]) i=0$i;;
+	esac
+done

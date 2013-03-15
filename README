@@ -1,0 +1,90 @@
+$Id: README,v 3.27 2002-01-06 16:28:58+02 rl Exp $
+
+            Uniform Polyhedra - Computation and 3D Display
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+    Uniform polyhedra, whose faces are regular and vertices equivalent, have
+been studied since antiquity. Best known are the 5 Platonic solids and the 13
+Archimedean solids. We then have 2 infinite families of uniform prisms and anti
+prisms. Allowing for star faces and vertices, we have the 4 Kepler-Poinsot
+regular star polyhedra, and a row of 53 nonconvex uniform polyhedra discovered
+in the 1880's and the 1930's. The complete set appeared in print for the first
+time in 1953, in a paper by Coxeter, Longuet-Higgins and Miller. Wenninger's
+1971 book "Polyhedron Models" contains photos and building instructions for
+cardboard models of the 75 uniform polyhedra.
+
+    In the paper "Uniform Solution for Uniform Polyhedra", published in
+Geometriae Dedicata, 47 (1993), 57-110, we propose a uniform approach to an
+arbitrary precision solution of uniform polyhedra and their duals, given a
+simple formula which describes the method of generation of each polyhedron by
+successive reflections in a trihedral kaleidoscope. The theory is complemented
+by 8 tables and 160 computer generated figures. A postscript version of the
+paper, along with C programs implementing the algorithms, are available for
+anonymous ftp from ftp.math.technion.ac.il, from the directory kaleido, or,
+through the Word-Wide Web, from the URL:
+http://www.math.technion.ac.il/kaleido/.
+
+    The program kaleido may be used, without any further programming, to
+compute the metrical properties of the polyhedra, such as angles and radii. and
+their combinatorial properties, such as the Euler characteristic and the
+covering density. Furthermore, the program is capable of generating Cartesian
+coordinates for the vertices and faces, which are then used to display a
+rotating wire-frame images of the polyhedra, with depth simulated by edge
+brightness, and to generate a pic file which can be included in any TeX or
+troff manuscript. The computational features are available on any machine with
+a decent C compiler.  The graphic features are currently available for Unix
+machines with X Windows or LucasFilm graphics, UNIX V/386 machines, and MS-DOS
+machines, but may be extended quite easily to other graphic environments. The
+source code is carefully broken into small logical units, so it may be used by
+an experienced programmer in any environment which requires a precise
+computation of polyhedra, such as a computer modeling software.
+
+    The source code may be found in kaleido/src, and the documentation in 
+kaleido/doc. In addition, we provide in kaleido several subdirectories
+which include executable code for common platforms, e.g., x-msdos, x-linux,
+x-sparc, etc. Each subdirectory has a README file, for further information.
+
+    To fetch the software, in a compressed tar format, use the ftp command
+    ftp>   get kaleido.tar.Z
+or to fetch a single subdirectory, use the commands
+    ftp>   cd kaleido
+    ftp>   get src.tar.Z
+etc. These commands use the ftp features of automatic archiving and
+compression.
+
+    If you use a WWW browser to access our archive, we provide appropriate
+hooks to get single files or whole directories. More information about the
+Technion Mathematics Department in general and its FTP archive in particular
+may be obtained from the URL: http://www.math.technion.ac.il/.
+
+	 As an illustration to kaleido's  possibilities, kaleido may produce
+virtual reality models (using VRML97) of the polyhedra, which can be viewed
+using any current VRML browser. Each polyhedron face is solid, colored
+according to its valency using a simple color coding. To overcome the
+limitations of the browsers, faces bounded by self-intersecting polygons are
+broken down to simple sub-faces by insertion of auxiliary vertices. Screen
+dumps of the models, and the VRML files themselves, may be viewed in the URL:
+http://www.math.technion.ac.il/~rl/kaleido/.
+
+    The help of the following persons is acknowledged with many thanks:
+Nadav Har'El <nyh@math.technion.ac.il> 
+Mark Phillips <mbp@geom.umn.edu>
+Jim Buddenhagen <jb1556@daditz.sbc.com> 
+David W. Sanderson <dws@scec.wisc.edu> 
+John Firth <jrf@minster.york.ac.uk>
+Roman Maeder <maeder@inf.ethz.ch>
+
+    Roman Maeder has ported the kaleido algorithms to Matehmatica. His programs
+are available by anonymous ftp from mathsource.wri.com, in the directory
+/pub/Enhencements/Graphics/3D/0206-165.  The polyhedra he generated may be
+viewed through the WWW in his Uniform Polyhedra page, URL:
+http://www.mathconsult.ch/showroom/unipoly/.
+
+    Comments and bug reports will be greatly appreciated. Please send them
+to the author:
+
+Dr. Zvi Har'El     mailto:rl@math.technion.ac.il     Department of Mathematics
+tel:+972-54-227607                   Technion - Israel Institute of Technology
+fax:+972-4-8324654 http://www.math.technion.ac.il/~rl/     Haifa 32000, ISRAEL
+"If you can't say somethin' nice, don't say nothin' at all." -- Thumper (1942)
