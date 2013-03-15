@@ -166,6 +166,8 @@ typedef struct {
 extern Polyhedron *kaleido(char *sym, int need_coordinates, int need_edgelist,
 	int need_approx, int just_list);
 extern Polyhedron *polyalloc(void);
+extern void polyfree(Polyhedron *P);
+
 extern Vector rotate(Vector vertex, Vector axis, double angle);
 extern Vector sum3(Vector a, Vector b, Vector c);
 extern Vector scale(double k, Vector a);

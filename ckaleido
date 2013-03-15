@@ -1,0 +1,14 @@
+#ifndef CKALEIDO_
+#define CKALEIDO_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <kaleido.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
