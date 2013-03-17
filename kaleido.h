@@ -104,11 +104,11 @@
 #define denominator(x) (frac(x), frax.d)
 #define compl(x) (frac(x), (double) frax.n / (frax.n-frax.d))
 
-typedef struct {
+typedef struct _Vector {
     double x, y, z;
 } Vector;
 
-typedef struct {
+typedef struct _Polyhedron {
     /* NOTE: some of the int's can be replaced by short's, char's,
 	    or even bit fields, at the expense of readability!!!*/
     int index; /* index to the standard list, the array uniform[] */
@@ -148,16 +148,16 @@ typedef struct {
     Vector *f; /* face coordinates (array F)*/
 } Polyhedron;
 
-typedef struct { /* See uniform.h for explanation of the fields */
+typedef struct _Uniform { /* See uniform.h for explanation of the fields */
 	char *Wythoff, *name, *dual;
 	short Coxeter, Wenninger;
 } Uniform;
 
-typedef struct {
+typedef struct _Fraction {
     long n,d;
 } Fraction;
 
-typedef struct {
+typedef struct _Error {
     const char *message;
     int line;
     const char *file;
